@@ -8,7 +8,14 @@ var Question = function(question, arrAnswers, correctAnswer) {
 // add method to display the question
 Question.prototype = {
   askQuestion: function() {
+    // log the question
     console.log(this.question);
+    // log all the possible answers
+    for (var i = 0; i < this.answers.length; i++) {
+      console.log("[" + i + "]" + " " + this.answers[i]);
+    }
+    // prompt the user for the answer
+    prompt("Please select the correct answer (just type the number)");
   }
 };
 
@@ -16,9 +23,25 @@ Question.prototype = {
 var questions = [];
 
 // create a few questions (Question instances)
-questions[0] = new Question("2+2", ["4", "1", "3"], 0);
-questions[1] = new Question("8-2", ["4", "6", "2"], 1);
-questions[2] = new Question("2+3", ["8", "9", "5"], 1);
+questions[0] = new Question(
+  "How is Javascript?",
+  ["Hard", "Boring", "Cool"],
+  2
+);
+questions[1] = new Question(
+  "How useful is this quiz?",
+  [
+    "Not useful at all",
+    "Useful only for the programmer to practice",
+    "Very useful"
+  ],
+  1
+);
+questions[2] = new Question(
+  "What is the best browser?",
+  ["MS Edge", "Firefox", "Chrome"],
+  2
+);
 
 // pick a random number of question
 var randomQuestion = Math.floor(Math.random() * 3);

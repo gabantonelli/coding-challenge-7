@@ -8,6 +8,8 @@
 
   // declare a variable to host user's answer
   var usersAnswer;
+  var usersScore = 0;
+  var newQuestion = true;
 
   // add method to display the question
   Question.prototype = {
@@ -26,9 +28,12 @@
     checkAnswer: function() {
       if (usersAnswer == this.correct) {
         console.log("Correct!");
+        usersScore++;
       } else {
         console.log("Please try again, you can do better");
       }
+      console.log("Your score is: " + usersScore);
+      console.log("=================================");
     }
   };
 
@@ -56,9 +61,13 @@
     2
   );
 
-  // pick a random number of question
-  var randomQuestion = Math.floor(Math.random() * 3);
-
-  questions[randomQuestion].askQuestion();
-  questions[randomQuestion].checkAnswer();
+  /**
+   * Including a while loop for the expert level version of the challenge
+   */
+  while (usersAnswer !== "exit") {
+    // pick a random number of question
+    var randomQuestion = Math.floor(Math.random() * 3);
+    questions[randomQuestion].askQuestion();
+    questions[randomQuestion].checkAnswer();
+  }
 })();
